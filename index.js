@@ -63,7 +63,10 @@ function toggleCheckedForListItem(itemIndex) {
   console.log("Toggling checked property for item at index " + itemIndex);
   STORE[itemIndex].checked = !STORE[itemIndex].checked;
 }
-
+function deleteListItem(itemIndex) {
+  console.log("Delete this index --" + itemIndex);
+  STORE.splice(itemIndex, 1);
+}
 
 function getItemIndexFromElement(item) {
   const itemIndexString = $(item)
@@ -85,7 +88,12 @@ function handleItemCheckClicked() {
 function handleDeleteItemClicked() {
   // this function will be responsible for when users want to delete a shopping list
   // item
-  console.log('`handleDeleteItemClicked` ran')
+  $('.js-shopping-list').on('click', `.js-item-delete`, event => {
+    console.log('`handleDeleteItemClicked` ran');
+    const itemIndex = getItemIndexFromElement(event.currentTarget);
+    deleteListItem(itemIndex);
+    renderShoppingList();
+  });
 }
 
 // this function will be our callback when the page loads. it's responsible for
