@@ -99,7 +99,7 @@ function onlyCheckedItems(){
   $('#display-checked-items').change(function() {
     console.log('onlyCheckedItems ran');
     if( $('input[type=checkbox]').prop('checked')) {
-      // $('.js-item-index-element') .hide();
+      $('.shopping-item__checked').hide();
       // function hide shopping-item__checked
     } else {
       renderShoppingList();
