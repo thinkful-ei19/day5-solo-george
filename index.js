@@ -95,29 +95,18 @@ function handleDeleteItemClicked() {
     renderShoppingList();
   });
 }
-
-function findOnlyCheckedItems(){
-  //look at at STORE array
-  $('#display-checked-items').on('click', event =>{
-    for ( let i = 0; i < STORE.length; i++ ){
-      console.log('item in STORE =>',STORE[i]);
+function onlyCheckedItems(){
+  $('#display-checked-items').change(function() {
+    console.log('onlyCheckedItems ran');
+    if( $('input[type=checkbox]').prop('checked')) {
+      // $('.js-item-index-element') .hide();
+      // function hide shopping-item__checked
+    } else {
+      renderShoppingList();
     }
   });
-  //see if check: is ture or false
-  //if ture display: none on only false items in the array
-  // ----End of code
+  // REMEMBER this is being called at the bottom.
 }
-console.log('find only Checked items',findOnlyCheckedItems());
-//  function valSeach(){
-//    const input = $('input[name*="inputValue"]');
-//    input.click(function(event){
-//     console.log(event);
-//    })
-//   //  const filter =  input.val().toUpperCase();
-//    console.log(input + '  is working');
-//  }
-//  valSeach();
-
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the shopping list, and activating our individual functions
 // that handle new item submission and user clicks on the "check" and "delete" buttons
@@ -127,6 +116,9 @@ function handleShoppingList() {
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
+
+  // only tests below
+  onlyCheckedItems();
 }
 
 // when the page loads, call `handleShoppingList`
